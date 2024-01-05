@@ -36,13 +36,20 @@ def add():
     return render_template('add.html')
 
 
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Account created!')
+        return redirect(url_for('login'))
+
+    if form.errors:
+        flash('Validation Errors: ' + str(form.errors))
+        app.logger.error('ValidationError:\n' + str(form.errors))
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     return render_template('login.html', title='Login', form=form)

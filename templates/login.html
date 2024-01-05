@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+
+    <div class = "main wrapper clearfix">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <table>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ form.email }}</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit"> Sign In </button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class = "main wrapper clearfix">
+        <a href="{{url_for('register')}}">Do not have an account?</a>
+    </div>
+
+{% endblock content %}
+
+{% block sidebar %}
+{% endblock %}
