@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for, flash
 from flask_package.forms import RegistrationForm, LoginForm
 from flask_package import app, db, bcrypt
 from flask_package.models import User
+from datetime import datetime
 
 feedback = []
 
@@ -12,7 +13,7 @@ def store_feedback(url):
         user='Test-User',
         date=datetime.now()
     ))
-
+# View function
 
 @app.route('/')
 @app.route('/index')
