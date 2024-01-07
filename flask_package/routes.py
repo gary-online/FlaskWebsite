@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash
 from flask_package.forms import RegistrationForm, LoginForm
-from flask_package import app
+from flask_package import app, db, bcrypt
 from flask_package.models import User
 
 feedback = []
@@ -35,6 +35,10 @@ def add():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
         flash('Account created!')
         return redirect(url_for('login'))
 
