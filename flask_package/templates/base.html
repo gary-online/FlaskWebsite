@@ -15,11 +15,12 @@
 
     <div class="header-container">
       <header class="wrapper clearfix">
-          <a href="{{ url_for('index') }}"><h1 class="title">Gary & Emma</h1></a>
+          <a href="{{ url_for('index') }}"><h1 class="title">Flask Web Application Template</h1></a>
         <nav>
           <ul>
               {% if current_user.is_authenticated %}
               <li><a href="{{url_for('logout')}}">Logout</a></li>
+              <li><a href="{{ url_for('add')}}">Feedback</a></li>
               {% else %}
             <li><a href="{{url_for('register')}}">Register</a></li>
             <li><a href="{{url_for('login')}}">Login</a></li>
@@ -53,6 +54,16 @@
             <h3>Hours of Operation</h3>
             <p>Monday - Friday: 9 AM - 6 PM</p>
             <p>Sunday: 10 AM - 4 PM</p>
+
+              {% if new_feedback %}
+              <ul>
+                  {% for bm in new_feedback %}
+                    <li>{{bm.url}}</li>
+                  {% endfor %}
+              </ul>
+              {% else %}
+              No feedback yet.
+              {% endif %}
           </aside>
 
         {% endblock %}
@@ -63,11 +74,11 @@
     <div class="footer-container">
       <footer class="wrapper">
         <h3>Contact Us</h3>
-        <p>World of Waifus</p>
-        <p>1100 Main Street</p>
-        <p>Wheeling, West Virginia 26003</p>
-        <p>Telephone: (304) 559-1410</p>
-        <p>Email: glessnergaryw@gmail.com</p>
+        <p>[Entity Name]</p>
+        <p>[Address]</p>
+        <p>[City, State, Zip]</p>
+        <p>[Telephone: (555) 555-5555]</p>
+        <p>[Email: admin@test.com]</p>
       </footer>
     </div>
 

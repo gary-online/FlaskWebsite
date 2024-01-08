@@ -15,13 +15,15 @@ def store_feedback(url):
         date=datetime.now()
     ))
 
+def new_feedback(num):
+    return sorted(feedback, key=lambda bm:bm['date'], reverse=True)[:num]
 
 # View function
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', new_feedback=new_feedback(3))
 
 
 @app.route('/add', methods=['GET', 'POST'])
@@ -72,6 +74,10 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+
+@app.route("/sale")
+def sale():
+    return render_template('sale.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
