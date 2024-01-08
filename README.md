@@ -14,7 +14,7 @@ maybe even become a developer for Computershare!
 
 Please use this code as a template to build your own Python web application with Flask! I would be honored if you used my code. If you do, please share with me what you create!
 
-Please star this repository! It helps increase my prescense on GitHub. Thank you for reading :)
+Please star this repository! It helps increase my prescense on GitHub. Thank you for reading 
 
-Made with ❤,
+Made with 🖤
 Gary
