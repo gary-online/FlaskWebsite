@@ -3,6 +3,7 @@ from flask_package.forms import RegistrationForm, LoginForm
 from flask_package import app, db, bcrypt
 from flask_package.models import User
 from datetime import datetime
+from flask_login import login_user, logout_user
 
 feedback = []
 
@@ -13,6 +14,8 @@ def store_feedback(url):
         user='Test-User',
         date=datetime.now()
     ))
+
+
 # View function
 
 @app.route('/')
@@ -53,8 +56,9 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@test.com' and form.password.data == 'Password':
-            flash('Logged in successfully!')
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user)
             return redirect(url_for('index'))
         else:
             flash('Login Unsuccessful!')

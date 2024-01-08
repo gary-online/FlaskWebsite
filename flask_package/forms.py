@@ -15,13 +15,13 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            flash('Username already exist')
+            flash('Username already exists.')
             raise ValidationError()
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            flash('Email already exist')
+            flash('Email already exists.')
             raise ValidationError()
 
 

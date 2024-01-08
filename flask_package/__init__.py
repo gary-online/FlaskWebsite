@@ -2,6 +2,7 @@ from flask import Flask
 from datetime import datetime
 from logging import DEBUG
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -15,5 +16,6 @@ app.logger.setLevel(DEBUG)
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
 
 from flask_package import routes
