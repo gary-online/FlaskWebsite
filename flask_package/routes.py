@@ -3,7 +3,7 @@ from flask_package.forms import RegistrationForm, LoginForm
 from flask_package import app, db, bcrypt
 from flask_package.models import User
 from datetime import datetime
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user, login_required
 
 feedback = []
 
@@ -37,6 +37,8 @@ def add():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
@@ -49,6 +51,7 @@ def register():
     if form.errors:
         flash('Validation Errors: ' + str(form.errors))
         app.logger.error('ValidationError:\n' + str(form.errors))
+
     return render_template('register.html', title='Register', form=form)
 
 
@@ -63,6 +66,11 @@ def login():
         else:
             flash('Login Unsuccessful!')
     return render_template('login.html', title='Login', form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.errorhandler(404)

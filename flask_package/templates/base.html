@@ -18,9 +18,13 @@
           <a href="{{ url_for('index') }}"><h1 class="title">The Puppy Shop</h1></a>
         <nav>
           <ul>
+              {% if current_user.is_authenticated %}
+              <li><a href="{{url_for('logout')}}">Logout</a></li>
+              {% else %}
             <li><a href="{{url_for('register')}}">Register</a></li>
             <li><a href="{{url_for('login')}}">Login</a></li>
             <li><a href="{{ url_for('add')}}">Feedback</a></li>
+              {% endif %}
           </ul>
         </nav>
       </header>
