@@ -1,5 +1,6 @@
-# My first webapplication
-## Python3 with Flask framework
+# Flask Web Application Template
+## Dependencies: Python3 & Flask with WTForms, SQLAlchemy, Bcrypt, & Jinja
+### All of the above can be installed in your virtual environment with pip.
 
 ### This application can only be ran on your *local computer*. 
 ### Please message me on LinkedIn if you would like me to show you how to run it!
@@ -11,10 +12,7 @@ Development, writing code, programming, and configuring custom computer operatin
 It has always been my dream to become a full-stack developer so I can build my own solutions to complex problems;
 maybe even become a developer for Computershare!
 
-If you have made it this far into the readme file, thank you for your support in my dreams. I have a bachelors and masters degree in Accounting and Finance,
-with no formal college computer science education.
-
-I am fully self-taught and driven by passion.
+Please use this code as a template to build your own Python web application with Flask! I would be honored if you used my code. If you do, please share with me what you create!
 
 Please star this repository! It helps increase my prescense on GitHub. Thank you for reading :)
 
